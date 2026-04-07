@@ -1,6 +1,7 @@
 import type { Chapter } from "../../../../shared/schema";
 
-const chapters: Chapter[] = [
+const chapters: Chapter[] = 
+[
   {
     "chapter": 1,
     "roman": "I",
@@ -62,8 +63,7 @@ const chapters: Chapter[] = [
         "lat": 38.7456277,
         "lng": -83.8449245
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 2,
@@ -140,8 +140,7 @@ const chapters: Chapter[] = [
         "lat": 38.8645138,
         "lng": -83.9040944
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 3,
@@ -218,8 +217,7 @@ const chapters: Chapter[] = [
         "lat": 29.9511,
         "lng": -90.0715
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 4,
@@ -254,8 +252,7 @@ const chapters: Chapter[] = [
         "lat": 30.2711286,
         "lng": -97.7436995
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 5,
@@ -290,8 +287,7 @@ const chapters: Chapter[] = [
         "lat": 27.7635302,
         "lng": -97.4033191
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 6,
@@ -309,8 +305,8 @@ const chapters: Chapter[] = [
         "location": "Little Colorado River crossing, Texas",
         "date": "March 1846",
         "description": "Army concentrated to cross the Colorado River; encountered mock Mexican bugle calls on the opposite bank but crossed without a shot fired",
-        "lat": 28.8,
-        "lng": -97.8
+        "lat": 26.184,
+        "lng": -97.608
       },
       {
         "location": "Rio Grande (opposite Matamoras), Texas",
@@ -326,8 +322,7 @@ const chapters: Chapter[] = [
         "lat": 26.073,
         "lng": -97.209
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 7,
@@ -376,8 +371,7 @@ const chapters: Chapter[] = [
         "lat": 26.32,
         "lng": -98.83
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 8,
@@ -419,8 +413,7 @@ const chapters: Chapter[] = [
         "lat": 25.686,
         "lng": -100.316
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 9,
@@ -462,8 +455,7 @@ const chapters: Chapter[] = [
         "lat": 19.1738,
         "lng": -96.1342
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 10,
@@ -519,8 +511,7 @@ const chapters: Chapter[] = [
         "lat": 18.833333,
         "lng": -98.0
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 11,
@@ -618,8 +609,7 @@ const chapters: Chapter[] = [
         "lat": 19.4419205,
         "lng": -99.160696
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 12,
@@ -640,8 +630,7 @@ const chapters: Chapter[] = [
         "lat": 19.28,
         "lng": -99.18
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 13,
@@ -718,8 +707,7 @@ const chapters: Chapter[] = [
         "lat": 18.67,
         "lng": -99.5
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 14,
@@ -845,8 +833,7 @@ const chapters: Chapter[] = [
         "lat": 37.7879363,
         "lng": -122.4075201
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 15,
@@ -895,8 +882,7 @@ const chapters: Chapter[] = [
         "lat": 37.7879363,
         "lng": -122.4075201
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 16,
@@ -938,8 +924,7 @@ const chapters: Chapter[] = [
         "lat": 42.4157304,
         "lng": -90.4294726
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 17,
@@ -1009,8 +994,7 @@ const chapters: Chapter[] = [
         "lat": 39.7990175,
         "lng": -89.6439575
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 18,
@@ -1035,8 +1019,8 @@ const chapters: Chapter[] = [
         "location": "Illinois River (crossing point), Illinois",
         "date": "July 1861",
         "description": "Halted at the Illinois River crossing after receiving orders redirecting the regiment to Ironton, Missouri; waited several days for a grounded steamer",
-        "lat": 40.5505603,
-        "lng": -89.7462413
+        "lat": 40.02,
+        "lng": -90.437
       },
       {
         "location": "Quincy, Illinois",
@@ -1056,8 +1040,8 @@ const chapters: Chapter[] = [
         "location": "Salt River bridge, Missouri",
         "date": "July 1861",
         "description": "Proceeded to Salt River where the railroad bridge had been destroyed; remained while bridge was rebuilt, about two weeks",
-        "lat": 39.42,
-        "lng": -91.92
+        "lat": 39.676,
+        "lng": -91.878
       },
       {
         "location": "Florida, Missouri",
@@ -1073,8 +1057,7 @@ const chapters: Chapter[] = [
         "lat": 39.1697626,
         "lng": -91.8829484
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 19,
@@ -1144,8 +1127,7 @@ const chapters: Chapter[] = [
         "lat": 37.0057958,
         "lng": -89.1772449
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 20,
@@ -1163,8 +1145,8 @@ const chapters: Chapter[] = [
         "location": "Mississippi River (6 miles above Columbus, KY)",
         "date": "November 6, 1861",
         "description": "Dropped down the river to within six miles of Columbus; debarked men on the Kentucky side to establish pickets",
-        "lat": 36.84,
-        "lng": -89.1
+        "lat": 36.855,
+        "lng": -89.125
       },
       {
         "location": "Belmont, Missouri",
@@ -1187,8 +1169,7 @@ const chapters: Chapter[] = [
         "lat": 36.7664457,
         "lng": -89.1217338
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 21,
@@ -1227,8 +1208,8 @@ const chapters: Chapter[] = [
         "location": "Tennessee River (9 miles below Fort Henry)",
         "date": "February 3-4, 1862",
         "description": "Arrived and found McClernand had stopped nine miles below Fort Henry; boarded gunboat Essex with Captain Porter to reconnoiter the fort's defenses under fire",
-        "lat": 36.42,
-        "lng": -88.1
+        "lat": 36.415,
+        "lng": -88.05
       },
       {
         "location": "Paducah, Kentucky",
@@ -1244,8 +1225,7 @@ const chapters: Chapter[] = [
         "lat": 36.507275,
         "lng": -88.0158633
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 22,
@@ -1287,8 +1267,7 @@ const chapters: Chapter[] = [
         "lat": 36.4878291,
         "lng": -87.8383567
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 23,
@@ -1337,8 +1316,7 @@ const chapters: Chapter[] = [
         "lat": 35.2248034,
         "lng": -88.2492037
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 24,
@@ -1394,8 +1372,7 @@ const chapters: Chapter[] = [
         "lat": 35.1503154,
         "lng": -88.3230504
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 25,
@@ -1423,8 +1400,7 @@ const chapters: Chapter[] = [
         "lat": 35.1503154,
         "lng": -88.3230504
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 26,
@@ -1452,8 +1428,7 @@ const chapters: Chapter[] = [
         "lat": 34.9343599,
         "lng": -88.5223353
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 27,
@@ -1495,8 +1470,7 @@ const chapters: Chapter[] = [
         "lat": 34.9343599,
         "lng": -88.5223353
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 28,
@@ -1524,8 +1498,7 @@ const chapters: Chapter[] = [
         "lat": 34.8117565,
         "lng": -88.1900415
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 29,
@@ -1553,8 +1526,7 @@ const chapters: Chapter[] = [
         "lat": 34.9343599,
         "lng": -88.5223353
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 30,
@@ -1603,8 +1575,7 @@ const chapters: Chapter[] = [
         "lat": 35.0518,
         "lng": -89.224
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 31,
@@ -1657,11 +1628,10 @@ const chapters: Chapter[] = [
         "location": "Steele's Bayou / Young's Point area, Louisiana",
         "date": "March 15, 1863",
         "description": "Accompanied Admiral Porter's fleet into Steele's Bayou for some distance before returning to headquarters to hurry reinforcements",
-        "lat": 32.27,
-        "lng": -91.05
+        "lat": 32.37,
+        "lng": -90.93
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 32,
@@ -1693,11 +1663,10 @@ const chapters: Chapter[] = [
         "location": "Mississippi River (opposite Vicksburg batteries), Louisiana/Mississippi",
         "date": "April 16, 1863",
         "description": "Witnessed the running of Vicksburg batteries from the deck of a river transport positioned in the middle of the river",
-        "lat": 32.3197898,
-        "lng": -90.897299
+        "lat": 32.352,
+        "lng": -90.96
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 33,
@@ -1722,15 +1691,15 @@ const chapters: Chapter[] = [
         "location": "Grand Gulf, Mississippi (river, aboard tug)",
         "date": "April 29, 1863",
         "description": "Occupied a tug to observe the naval battle against Grand Gulf's batteries; boarded Porter's flagship after the unsuccessful attack",
-        "lat": 32.0332117,
-        "lng": -91.0526075
+        "lat": 32.013,
+        "lng": -90.874
       },
       {
         "location": "West bank of Mississippi (opposite Grand Gulf), Louisiana",
         "date": "Evening April 29, 1863",
         "description": "Troops marched across the tongue of land opposite Grand Gulf at night while the navy ran the batteries",
-        "lat": 32.05,
-        "lng": -91.12
+        "lat": 32.013,
+        "lng": -90.874
       },
       {
         "location": "Bruinsburg, Mississippi",
@@ -1746,8 +1715,7 @@ const chapters: Chapter[] = [
         "lat": 31.94,
         "lng": -90.98
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 34,
@@ -1765,8 +1733,8 @@ const chapters: Chapter[] = [
         "location": "North Fork of Bayou Pierre, Mississippi",
         "date": "May 2, 1863",
         "description": "Marched eight miles beyond Port Gibson to the North Fork after crossing the repaired bridge over the South Fork",
-        "lat": 32.1,
-        "lng": -90.88
+        "lat": 31.975,
+        "lng": -90.875
       },
       {
         "location": "Grand Gulf, Mississippi",
@@ -1780,14 +1748,14 @@ const chapters: Chapter[] = [
         "date": "May 3\u20134, 1863",
         "description": "Arrived at Hankinson's Ferry before daylight; used as a base while troops advanced; directed reconnoissances toward Big Black River",
         "lat": 32.07,
-        "lng": -90.86
+        "lng": -90.82
       },
       {
         "location": "Road from Hankinson's Ferry junction toward Grand Gulf, Mississippi",
         "date": "May 3, 1863",
         "description": "Went with Logan's division a short distance from the road junction toward Grand Gulf before returning",
         "lat": 32.07,
-        "lng": -90.87
+        "lng": -90.82
       },
       {
         "location": "Rocky Springs, Mississippi",
@@ -1803,8 +1771,7 @@ const chapters: Chapter[] = [
         "lat": 32.2592783,
         "lng": -90.4225951
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 35,
@@ -1815,8 +1782,8 @@ const chapters: Chapter[] = [
         "location": "Fourteen Mile Creek area (with Sherman), Mississippi",
         "date": "Evening May 12, 1863",
         "description": "Was with Sherman when McPherson's victory at Raymond was reported; immediately ordered the whole column to turn toward Jackson",
-        "lat": 32.2604829,
-        "lng": -90.6329407
+        "lat": 32.243,
+        "lng": -90.442
       },
       {
         "location": "Jackson, Mississippi",
@@ -1853,8 +1820,7 @@ const chapters: Chapter[] = [
         "lat": 32.3,
         "lng": -90.6
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 36,
@@ -1872,8 +1838,8 @@ const chapters: Chapter[] = [
         "location": "Big Black River, Mississippi",
         "date": "May 17\u201318, 1863",
         "description": "Supervised construction of three bridges across the Big Black after the enemy destroyed the existing bridge; all three completed by 8 A.M. on the 18th",
-        "lat": 32.7287262,
-        "lng": -90.0763897
+        "lat": 32.315,
+        "lng": -90.575
       },
       {
         "location": "Walnut Hills / Vicksburg area, Mississippi",
@@ -1910,8 +1876,7 @@ const chapters: Chapter[] = [
         "lat": 32.3527,
         "lng": -90.8779
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 37,
@@ -1960,8 +1925,7 @@ const chapters: Chapter[] = [
         "lat": 32.3528055,
         "lng": -90.8777342
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 38,
@@ -2010,8 +1974,7 @@ const chapters: Chapter[] = [
         "lat": 36.7596193,
         "lng": -89.1035953
       }
-    ],
-    "volume": 1
+    ]
   },
   {
     "chapter": 39,
@@ -2074,8 +2037,7 @@ const chapters: Chapter[] = [
         "lat": 35.0457219,
         "lng": -85.3094883
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 40,
@@ -2110,8 +2072,7 @@ const chapters: Chapter[] = [
         "lat": 35.0457219,
         "lng": -85.3094883
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 41,
@@ -2132,8 +2093,7 @@ const chapters: Chapter[] = [
         "lat": 35.0457219,
         "lng": -85.3094883
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 42,
@@ -2154,8 +2114,7 @@ const chapters: Chapter[] = [
         "lat": 35.0397962,
         "lng": -85.2780126
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 43,
@@ -2176,8 +2135,7 @@ const chapters: Chapter[] = [
         "lat": 35.0363978,
         "lng": -85.2542588
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 44,
@@ -2237,8 +2195,8 @@ const chapters: Chapter[] = [
         "location": "Junction of Clinch River and Tennessee River, Tennessee",
         "date": "Late December 1863",
         "description": "Disembarked from steamer with horses at Clinch River junction to continue by rail toward Knoxville",
-        "lat": 36.53,
-        "lng": -83.95
+        "lat": 35.863,
+        "lng": -84.532
       },
       {
         "location": "Knoxville, Tennessee",
@@ -2275,8 +2233,7 @@ const chapters: Chapter[] = [
         "lat": 36.1622767,
         "lng": -86.7742984
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 45,
@@ -2360,8 +2317,7 @@ const chapters: Chapter[] = [
         "lat": 38.4734,
         "lng": -78.0097
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 46,
@@ -2396,8 +2352,7 @@ const chapters: Chapter[] = [
         "lat": 38.69,
         "lng": -77.79
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 47,
@@ -2425,8 +2380,7 @@ const chapters: Chapter[] = [
         "lat": 38.1958,
         "lng": -77.587
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 48,
@@ -2454,8 +2408,7 @@ const chapters: Chapter[] = [
         "lat": 37.5385087,
         "lng": -77.43428
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 49,
@@ -2497,8 +2450,7 @@ const chapters: Chapter[] = [
         "lat": 38.31,
         "lng": -77.875
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 50,
@@ -2526,8 +2478,7 @@ const chapters: Chapter[] = [
         "lat": 38.2555156,
         "lng": -77.6364683
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 51,
@@ -2548,8 +2499,7 @@ const chapters: Chapter[] = [
         "lat": 38.1958,
         "lng": -77.587
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 52,
@@ -2570,8 +2520,7 @@ const chapters: Chapter[] = [
         "lat": 38.1880936,
         "lng": -77.6741751
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 53,
@@ -2596,8 +2545,8 @@ const chapters: Chapter[] = [
         "location": "North Anna River (Jericho Ford area), Virginia",
         "date": "May 23\u201325, 1864",
         "description": "Grant present near the North Anna River during crossings and operations; sat on porch of Mrs. Tyler's plantation awaiting Burnside's corps",
-        "lat": 38.0126827,
-        "lng": -77.7037185
+        "lat": 37.886,
+        "lng": -77.494
       },
       {
         "location": "Quarles' Mills, Virginia",
@@ -2613,8 +2562,7 @@ const chapters: Chapter[] = [
         "lat": 37.701,
         "lng": -77.213
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 54,
@@ -2642,8 +2590,7 @@ const chapters: Chapter[] = [
         "lat": 37.590978,
         "lng": -77.2705326
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 55,
@@ -2685,8 +2632,7 @@ const chapters: Chapter[] = [
         "lat": 37.227928,
         "lng": -77.4019268
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 56,
@@ -2718,8 +2664,8 @@ const chapters: Chapter[] = [
         "location": "Monocacy River, Maryland",
         "date": "August 4\u20135, 1864",
         "description": "Grant went directly through to the Monocacy (bypassing Washington) to meet General Hunter and reorganize forces against Early's Valley threat",
-        "lat": 39.3116909,
-        "lng": -77.4249623
+        "lat": 39.372,
+        "lng": -77.422
       },
       {
         "location": "Monocacy Junction, Maryland",
@@ -2728,8 +2674,7 @@ const chapters: Chapter[] = [
         "lat": 39.377147,
         "lng": -77.3955914
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 57,
@@ -2771,8 +2716,7 @@ const chapters: Chapter[] = [
         "lat": 37.3130119,
         "lng": -77.2758247
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 58,
@@ -2793,8 +2737,7 @@ const chapters: Chapter[] = [
         "lat": 37.3130119,
         "lng": -77.2758247
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 59,
@@ -2815,8 +2758,7 @@ const chapters: Chapter[] = [
         "lat": 38.8950982,
         "lng": -77.0363849
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 60,
@@ -2837,8 +2779,7 @@ const chapters: Chapter[] = [
         "lat": 37.3130119,
         "lng": -77.2758247
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 61,
@@ -2859,8 +2800,7 @@ const chapters: Chapter[] = [
         "lat": 38.8950982,
         "lng": -77.0363849
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 62,
@@ -2902,8 +2842,7 @@ const chapters: Chapter[] = [
         "lat": 37.3130119,
         "lng": -77.2758247
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 63,
@@ -2952,8 +2891,7 @@ const chapters: Chapter[] = [
         "lat": 37.227928,
         "lng": -77.4019268
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 64,
@@ -3002,8 +2940,7 @@ const chapters: Chapter[] = [
         "lat": 37.26,
         "lng": -77.9
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 65,
@@ -3031,8 +2968,7 @@ const chapters: Chapter[] = [
         "lat": 37.3024713,
         "lng": -78.3923813
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 66,
@@ -3074,8 +3010,7 @@ const chapters: Chapter[] = [
         "lat": 37.19,
         "lng": -78.2
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 67,
@@ -3096,8 +3031,7 @@ const chapters: Chapter[] = [
         "lat": 38.8950982,
         "lng": -77.0363849
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 68,
@@ -3132,8 +3066,7 @@ const chapters: Chapter[] = [
         "lat": 35.3848841,
         "lng": -77.9927651
       }
-    ],
-    "volume": 2
+    ]
   },
   {
     "chapter": 69,
@@ -3154,9 +3087,9 @@ const chapters: Chapter[] = [
         "lat": 38.8950982,
         "lng": -77.0363849
       }
-    ],
-    "volume": 2
+    ]
   }
-];
+]
+;
 
 export default chapters;
