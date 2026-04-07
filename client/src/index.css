@@ -200,7 +200,7 @@ a, button, [role="button"], input, select {
 }
 
 /* ============================================================ APP BODY */
-.app-body { display: flex; flex: 1; overflow: hidden; }
+.app-body { display: flex; flex: 1; overflow: hidden; position: relative; }
 
 /* ============================================================ SIDEBAR */
 .sidebar {
@@ -528,7 +528,7 @@ a, button, [role="button"], input, select {
 .map-sidebar-fab {
   display: none;
   position: absolute;
-  top: var(--space-3);
+  bottom: var(--space-8);
   left: var(--space-3);
   z-index: 400;
   width: 40px; height: 40px;
@@ -551,13 +551,18 @@ a, button, [role="button"], input, select {
   /* Show hamburger in header, hide on desktop */
   .mobile-menu-btn { display: flex; }
 
-  /* Sidebar floats over map on mobile */
+  /* App shell is the positioning context for the mobile sidebar */
+  .app-shell { position: relative; }
+
+  /* Sidebar floats over the entire viewport (below header) on mobile.
+     It is positioned relative to app-shell, NOT app-body, so overflow:hidden
+     on app-body doesn't clip it. */
   .sidebar {
-    position: absolute;
-    top: 0; left: 0;
-    height: 100%;
+    position: fixed;
+    top: 48px; left: 0;
+    height: calc(100dvh - 48px);
     width: min(88vw, 320px) !important;
-    z-index: 300;
+    z-index: 500;
     box-shadow: var(--shadow-lg);
   }
   .sidebar--closed {
@@ -578,9 +583,10 @@ a, button, [role="button"], input, select {
   /* Semi-transparent backdrop behind the sidebar */
   .sidebar-backdrop {
     display: block;
-    position: absolute;
-    inset: 0;
-    z-index: 200;
+    position: fixed;
+    top: 48px; left: 0;
+    width: 100%; height: calc(100dvh - 48px);
+    z-index: 400;
     background: rgba(0, 0, 0, 0.45);
     backdrop-filter: blur(1px);
   }
@@ -591,9 +597,6 @@ a, button, [role="button"], input, select {
   /* Tighter header on mobile */
   .app-header { padding: 0 var(--space-3); height: 48px; }
   .header-sub { display: none; }
-
-  /* Full-width map */
-  .app-body { position: relative; }
 
   /* Larger touch targets in movements list */
   .movement-item { padding: var(--space-3) var(--space-3); }

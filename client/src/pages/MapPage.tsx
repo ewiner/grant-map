@@ -95,7 +95,7 @@ export default function MapPage() {
 
   const [currentChapterIdx, setCurrentChapterIdx] = useState(0);
   const [selectedMovementIdx, setSelectedMovementIdx] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 640);
   const [showChapterList, setShowChapterList] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() =>
     window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
@@ -514,18 +514,6 @@ export default function MapPage() {
         {/* Map */}
         <main className="map-container">
           <div ref={mapContainerRef} className="map" data-testid="map-container" />
-          {/* Mobile: floating button to open sidebar when closed */}
-          {!sidebarOpen && (
-            <button
-              className="map-sidebar-fab"
-              onClick={() => setSidebarOpen(true)}
-              aria-label="Open chapter sidebar"
-              data-testid="button-fab-open-sidebar"
-              title="Open sidebar"
-            >
-              <Menu size={18} />
-            </button>
-          )}
         </main>
       </div>
     </div>
