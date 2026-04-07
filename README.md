@@ -2,7 +2,7 @@
 
 An interactive web map for following Ulysses S. Grant's geographic movements through his *Personal Memoirs* (1885). Navigate all 69 chapters of the book and watch Grant's journey unfold — from his Ohio boyhood, through West Point and the Mexican-American War, to commanding the Union armies in the Civil War.
 
-**[Live Demo →](https://www.perplexity.ai/computer/a/grant-s-memoirs-movement-map-Y4h6QVizR9WiCkVCHSC1yw)**
+**[Live Demo →](https://grant.winer.ly)**
 
 ---
 
@@ -80,16 +80,14 @@ grant-map/
 
 ---
 
-## Vibe-Coded with Perplexity Computer
+## Vibe-Coded
 
-This project was built entirely through natural-language conversation using **[Perplexity Computer](https://www.perplexity.ai/computer)**, an AI agent that can research, write code, debug, and deploy — all from plain English instructions.
+Disclosure: this project was built entirely using **[Perplexity Computer](https://www.perplexity.ai/computer)** with no human review or modification, apart from light edits to this README.
 
 The underlying AI models powering the work:
 - **Claude Sonnet 4.5 / Claude Sonnet 4.6** (Anthropic) — primary coding and reasoning agent
 - **GPT-4o** (OpenAI) — used for text extraction subagents (chapter geographic movement parsing)
 - **Nominatim / OpenStreetMap** — automated geocoding of location names
-
-No code was written by hand. The entire pipeline — from downloading the Gutenberg text, through parallel chapter parsing, geocoding, React app construction, iterative QA, and deployment — was orchestrated through conversation.
 
 ---
 
