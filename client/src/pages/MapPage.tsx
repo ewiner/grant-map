@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import chapters from "../data/chapters";
 import type { Chapter, Movement } from "../../../../shared/schema";
 import { ChevronLeft, ChevronRight, MapPin, Sun, Moon, List, X, Menu } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 // Fix Leaflet default icon paths (Vite bundles them incorrectly)
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -298,6 +299,17 @@ export default function MapPage() {
           </div>
         </div>
         <div className="header-right">
+          <a
+            className="icon-btn"
+            href="https://github.com/ewiner/grant-map"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="View source on GitHub"
+            data-testid="link-github"
+            title="View source on GitHub"
+          >
+            <SiGithub size={17} />
+          </a>
           <button
             className="icon-btn"
             onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
