@@ -194,36 +194,45 @@ export default function MapPage() {
       }).addTo(map);
     }
 
-    // Create marker cluster group with themed styling
-    const clusterBg = isDark ? "#d4a843" : "#b8891a";
-    const clusterBorder = isDark ? "#9a7020" : "#7a5508";
-    const clusterText = isDark ? "#141210" : "#fff";
+    // Create marker cluster group with pill-style labels
+    const pillBg = isDark ? "#26231e" : "#f4efe6";
+    const pillBorder = isDark ? "#d4a843" : "#b8891a";
+    const pillText = isDark ? "#d4a843" : "#7a5508";
 
     const cluster = (L as any).markerClusterGroup({
-      maxClusterRadius: 35, // Only cluster when really close
+      maxClusterRadius: 35,
       spiderfyOnMaxZoom: true,
       showCoverageOnHover: false,
       zoomToBoundsOnClick: true,
       spiderfyDistanceMultiplier: 1.8,
       iconCreateFunction: (c: any) => {
-        const count = c.getChildCount();
+        // Collect stop numbers from child markers
+        const nums: number[] = c.getAllChildMarkers()
+          .map((m: any) => m.options._stopNum as number)
+          .filter((n: number) => n != null)
+          .sort((a: number, b: number) => a - b);
+        const label = nums.join("\u00b7"); // middot
+        const pillWidth = Math.max(36, label.length * 8 + 16);
         return L.divIcon({
           className: "",
           html: `<div style="
-            width:32px;height:32px;
-            border-radius:50%;
-            background:${clusterBg};
-            border:2px solid ${clusterBorder};
-            display:flex;align-items:center;justify-content:center;
-            box-shadow:0 2px 10px rgba(0,0,0,0.45);
+            height:24px;
+            padding:0 8px;
+            border-radius:12px;
+            background:${pillBg};
+            border:1.5px solid ${pillBorder};
+            display:inline-flex;align-items:center;justify-content:center;
+            box-shadow:0 2px 8px rgba(0,0,0,0.35);
             cursor:pointer;
+            white-space:nowrap;
           "><span style="
-            font-size:11px;font-weight:700;
-            color:${clusterText};line-height:1;
+            font-size:11px;font-weight:600;
+            color:${pillText};line-height:1;
             font-family:system-ui,sans-serif;
-          ">${count}</span></div>`,
-          iconSize: [32, 32],
-          iconAnchor: [16, 16],
+            letter-spacing:0.5px;
+          ">${label}</span></div>`,
+          iconSize: [pillWidth, 24],
+          iconAnchor: [pillWidth / 2, 12],
         });
       },
     });
@@ -236,7 +245,8 @@ export default function MapPage() {
       const num = markerNum;
       const marker = L.marker([movement.lat, movement.lng], {
         icon: createNumberedIcon(num, false, isDark),
-      });
+        _stopNum: num, // Store stop number for cluster pill labels
+      } as any);
 
       const dateStr = movement.date
         ? `<span class="popup-date">${movement.date}</span>`
