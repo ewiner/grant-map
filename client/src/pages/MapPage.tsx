@@ -194,10 +194,10 @@ export default function MapPage() {
       }).addTo(map);
     }
 
-    // Create marker cluster group with pill-style labels
-    const pillBg = isDark ? "#26231e" : "#f4efe6";
-    const pillBorder = isDark ? "#d4a843" : "#b8891a";
-    const pillText = isDark ? "#d4a843" : "#7a5508";
+    // Create marker cluster group with pill-style labels (same gold as pins)
+    const pillBg = isDark ? "#d4a843" : "#b8891a";
+    const pillBorder = isDark ? "#9a7020" : "#7a5508";
+    const pillText = isDark ? "#141210" : "#fff";
 
     const cluster = (L as any).markerClusterGroup({
       maxClusterRadius: 35,
