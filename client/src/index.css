@@ -296,6 +296,7 @@ a, button, [role="button"], input, select {
 .chapter-picker-wrap {
   border-bottom: 1px solid var(--color-divider);
   flex-shrink: 0;
+  /* When the dropdown is open, let this section grow to fill available space on mobile */
 }
 .chapter-picker-toggle {
   display: flex; align-items: center; gap: var(--space-2);
@@ -305,11 +306,13 @@ a, button, [role="button"], input, select {
   border: none;
 }
 .chapter-picker-toggle:hover { background: var(--color-surface-offset); color: var(--color-text); }
+.picker-icon { flex-shrink: 0; }
 
 /* Chapter list dropdown */
 .chapter-list-dropdown {
-  max-height: 260px;
+  max-height: min(50vh, 400px);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   border-top: 1px solid var(--color-divider);
   background: var(--color-surface-2);
 }
@@ -523,40 +526,25 @@ a, button, [role="button"], input, select {
 [data-theme="dark"] .popup-date { color: #887f74 !important; }
 [data-theme="dark"] .popup-num { color: #d4a843 !important; }
 
-/* ============================================================ MOBILE SIDEBAR FAB */
+/* ============================================================ MARKER CLUSTER — spider legs */
+.leaflet-cluster-anim .leaflet-marker-icon,
+.leaflet-cluster-anim .leaflet-marker-shadow {
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+/* ============================================================ MOBILE HELPERS */
 .mobile-menu-btn { display: none; }
-.map-sidebar-fab {
-  display: none;
-  position: absolute;
-  bottom: var(--space-8);
-  left: var(--space-3);
-  z-index: 400;
-  width: 40px; height: 40px;
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  box-shadow: var(--shadow-md);
-  align-items: center;
-  justify-content: center;
-}
-.map-sidebar-fab:hover {
-  background: var(--color-surface-offset);
-  color: var(--color-gold);
-}
 .sidebar-backdrop { display: none; }
 
 /* ============================================================ MOBILE */
 @media (max-width: 640px) {
-  /* Show hamburger in header, hide on desktop */
+  /* Show hamburger in header */
   .mobile-menu-btn { display: flex; }
 
-  /* App shell is the positioning context for the mobile sidebar */
+  /* App shell positioning context */
   .app-shell { position: relative; }
 
-  /* Sidebar floats over the entire viewport (below header) on mobile.
-     It is positioned relative to app-shell, NOT app-body, so overflow:hidden
-     on app-body doesn't clip it. */
+  /* Sidebar: fixed overlay below header */
   .sidebar {
     position: fixed;
     top: 48px; left: 0;
@@ -580,7 +568,7 @@ a, button, [role="button"], input, select {
                 opacity 220ms cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* Semi-transparent backdrop behind the sidebar */
+  /* Semi-transparent backdrop */
   .sidebar-backdrop {
     display: block;
     position: fixed;
@@ -591,16 +579,19 @@ a, button, [role="button"], input, select {
     backdrop-filter: blur(1px);
   }
 
-  /* FAB to reopen sidebar */
-  .map-sidebar-fab { display: flex; }
-
-  /* Tighter header on mobile */
+  /* Tighter header */
   .app-header { padding: 0 var(--space-3); height: 48px; }
   .header-sub { display: none; }
 
-  /* Larger touch targets in movements list */
-  .movement-item { padding: var(--space-3) var(--space-3); }
+  /* Bigger chapter list on mobile — fill most of the sidebar height */
+  .chapter-list-dropdown {
+    max-height: calc(100dvh - 240px);
+  }
 
-  /* Sidebar footer — hide keyboard hint on touch */
+  /* Larger touch targets */
+  .movement-item { padding: var(--space-3) var(--space-3); }
+  .chapter-list-item { padding: var(--space-3) var(--space-4); }
+
+  /* Hide keyboard hint on touch */
   .sidebar-footer { display: none; }
 }

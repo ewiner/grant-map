@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster";
+import "leaflet.markercluster/dist/MarkerCluster.css";
 import chapters from "../data/chapters";
 import type { Chapter, Movement } from "../../../../shared/schema";
 import { ChevronLeft, ChevronRight, MapPin, Sun, Moon, List, X, Menu } from "lucide-react";
@@ -90,13 +92,15 @@ function formatTitle(title: string): string {
 export default function MapPage() {
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
+  const clusterGroupRef = useRef<L.MarkerClusterGroup | null>(null);
   const markersRef = useRef<L.Marker[]>([]);
   const polylineRef = useRef<L.Polyline | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
   const [currentChapterIdx, setCurrentChapterIdx] = useState(0);
   const [selectedMovementIdx, setSelectedMovementIdx] = useState<number | null>(null);
-  const [sidebarOpen, setSidebarOpen] = useState(() => window.innerWidth >= 640);
+  // Always start with sidebar open (including mobile)
+  const [sidebarOpen, setSidebarOpen] = useState(true);
   const [showChapterList, setShowChapterList] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">(() =>
     window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
@@ -117,9 +121,14 @@ export default function MapPage() {
     const map = L.map(mapContainerRef.current, {
       center: [38, -90],
       zoom: 4,
-      zoomControl: true,
+      zoomControl: false, // We'll add it manually at topright
       attributionControl: true,
+      tap: true, // Enable tap for mobile touch
+      tapTolerance: 15,
     });
+
+    // Add zoom control at top-right so it doesn't overlap the sidebar
+    L.control.zoom({ position: "topright" }).addTo(map);
 
     const tile = L.tileLayer(isDark ? TILE_DARK : TILE_LIGHT, {
       attribution: TILE_ATTR,
@@ -148,7 +157,6 @@ export default function MapPage() {
       subdomains: "abcd",
       maxZoom: 19,
     }).addTo(map);
-    // Bring tile to back so markers stay on top
     tile.bringToBack();
     tileLayerRef.current = tile;
   }, [theme]);
@@ -158,7 +166,11 @@ export default function MapPage() {
     const map = mapRef.current;
     if (!map || !currentChapter) return;
 
-    markersRef.current.forEach((m) => m.remove());
+    // Remove old cluster group
+    if (clusterGroupRef.current) {
+      map.removeLayer(clusterGroupRef.current);
+      clusterGroupRef.current = null;
+    }
     markersRef.current = [];
     if (polylineRef.current) {
       polylineRef.current.remove();
@@ -172,7 +184,7 @@ export default function MapPage() {
 
     const points = validMovements.map((m) => [m.lat!, m.lng!] as [number, number]);
 
-    // Draw route polyline
+    // Draw route polyline (outside cluster group so it's always visible)
     if (points.length > 1) {
       polylineRef.current = L.polyline(points, {
         color: isDark ? "#d4a843" : "#b8891a",
@@ -182,7 +194,41 @@ export default function MapPage() {
       }).addTo(map);
     }
 
-    // Add numbered markers
+    // Create marker cluster group with themed styling
+    const clusterBg = isDark ? "#d4a843" : "#b8891a";
+    const clusterBorder = isDark ? "#9a7020" : "#7a5508";
+    const clusterText = isDark ? "#141210" : "#fff";
+
+    const cluster = (L as any).markerClusterGroup({
+      maxClusterRadius: 35, // Only cluster when really close
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      zoomToBoundsOnClick: true,
+      spiderfyDistanceMultiplier: 1.8,
+      iconCreateFunction: (c: any) => {
+        const count = c.getChildCount();
+        return L.divIcon({
+          className: "",
+          html: `<div style="
+            width:32px;height:32px;
+            border-radius:50%;
+            background:${clusterBg};
+            border:2px solid ${clusterBorder};
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 2px 10px rgba(0,0,0,0.45);
+            cursor:pointer;
+          "><span style="
+            font-size:11px;font-weight:700;
+            color:${clusterText};line-height:1;
+            font-family:system-ui,sans-serif;
+          ">${count}</span></div>`,
+          iconSize: [32, 32],
+          iconAnchor: [16, 16],
+        });
+      },
+    });
+
+    // Add numbered markers to cluster group
     let markerNum = 0;
     currentChapter.movements.forEach((movement, idx) => {
       if (movement.lat == null || movement.lng == null) return;
@@ -206,9 +252,12 @@ export default function MapPage() {
       );
 
       marker.on("click", () => setSelectedMovementIdx(idx));
-      marker.addTo(map);
+      cluster.addLayer(marker);
       markersRef.current.push(marker);
     });
+
+    map.addLayer(cluster);
+    clusterGroupRef.current = cluster;
 
     // Fit bounds
     if (points.length === 1) {
@@ -241,14 +290,13 @@ export default function MapPage() {
     });
   }, [selectedMovementIdx]);
 
+  // Chapter navigation — NO auto-close of sidebar
   const goPrev = useCallback(() => {
     setCurrentChapterIdx((i) => Math.max(0, i - 1));
-    if (window.innerWidth < 640) setSidebarOpen(false);
   }, []);
 
   const goNext = useCallback(() => {
     setCurrentChapterIdx((i) => Math.min(chapters.length - 1, i + 1));
-    if (window.innerWidth < 640) setSidebarOpen(false);
   }, []);
 
   // Keyboard navigation
@@ -276,7 +324,6 @@ export default function MapPage() {
       {/* Header */}
       <header className="app-header">
         <div className="header-left">
-          {/* Star logo — General's star */}
           <svg
             aria-label="Grant Map"
             viewBox="0 0 40 40"
@@ -319,7 +366,7 @@ export default function MapPage() {
           >
             {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
           </button>
-          {/* Mobile hamburger — only visible on small screens */}
+          {/* Mobile hamburger */}
           <button
             className="icon-btn mobile-menu-btn"
             onClick={() => setSidebarOpen((o) => !o)}
@@ -377,7 +424,7 @@ export default function MapPage() {
 
           {currentChapter ? (
             <>
-              {/* Chapter picker — NOW ABOVE the chapter title */}
+              {/* Chapter picker */}
               <div className="chapter-picker-wrap">
                 <button
                   className="chapter-picker-toggle"
@@ -385,16 +432,12 @@ export default function MapPage() {
                   data-testid="button-chapter-list-toggle"
                   aria-expanded={showChapterList}
                 >
-                  <List size={13} />
+                  {showChapterList ? (
+                    <X size={13} className="picker-icon" />
+                  ) : (
+                    <List size={13} className="picker-icon" />
+                  )}
                   <span>Jump to chapter</span>
-                  <ChevronRight
-                    size={13}
-                    style={{
-                      transform: showChapterList ? "rotate(90deg)" : "rotate(0deg)",
-                      transition: "transform 0.2s ease",
-                      marginLeft: "auto",
-                    }}
-                  />
                 </button>
 
                 {showChapterList && (
@@ -410,7 +453,6 @@ export default function MapPage() {
                             onClick={() => {
                               setCurrentChapterIdx(globalIdx);
                               setShowChapterList(false);
-                              if (window.innerWidth < 640) setSidebarOpen(false);
                             }}
                             data-testid={`chapter-list-item-${ch.chapter}`}
                           >
@@ -431,7 +473,6 @@ export default function MapPage() {
                             onClick={() => {
                               setCurrentChapterIdx(globalIdx);
                               setShowChapterList(false);
-                              if (window.innerWidth < 640) setSidebarOpen(false);
                             }}
                             data-testid={`chapter-list-item-${ch.chapter}`}
                           >
@@ -445,7 +486,7 @@ export default function MapPage() {
                 )}
               </div>
 
-              {/* Chapter title — NOW BELOW the picker */}
+              {/* Chapter title */}
               <div className="chapter-header">
                 <div className="chapter-roman-row">
                   <span className="chapter-roman">{currentChapter.roman}</span>
