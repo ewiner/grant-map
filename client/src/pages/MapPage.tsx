@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { useLocation } from "wouter";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster";
@@ -89,7 +90,12 @@ function formatTitle(title: string): string {
     .replace(/\bUs\b/, "U.S.");
 }
 
-export default function MapPage() {
+interface MapPageProps {
+  chapterNum?: number;
+}
+
+export default function MapPage({ chapterNum }: MapPageProps) {
+  const [, navigate] = useLocation();
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement>(null);
   const clusterGroupRef = useRef<L.MarkerClusterGroup | null>(null);
@@ -97,7 +103,22 @@ export default function MapPage() {
   const polylineRef = useRef<L.Polyline | null>(null);
   const tileLayerRef = useRef<L.TileLayer | null>(null);
 
-  const [currentChapterIdx, setCurrentChapterIdx] = useState(0);
+  // Derive chapter index from URL param
+  const currentChapterIdx = useMemo(() => {
+    if (chapterNum == null) return 0;
+    const idx = chapters.findIndex((c) => c.chapter === chapterNum);
+    return idx >= 0 ? idx : 0;
+  }, [chapterNum]);
+
+  const setCurrentChapterIdx = useCallback(
+    (idxOrFn: number | ((prev: number) => number)) => {
+      const newIdx = typeof idxOrFn === "function" ? idxOrFn(currentChapterIdx) : idxOrFn;
+      const ch = chapters[newIdx];
+      if (ch) navigate(`/chapter/${ch.chapter}`);
+    },
+    [currentChapterIdx, navigate]
+  );
+
   const [selectedMovementIdx, setSelectedMovementIdx] = useState<number | null>(null);
   // Always start with sidebar open (including mobile)
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -303,11 +324,11 @@ export default function MapPage() {
   // Chapter navigation — NO auto-close of sidebar
   const goPrev = useCallback(() => {
     setCurrentChapterIdx((i) => Math.max(0, i - 1));
-  }, []);
+  }, [setCurrentChapterIdx]);
 
   const goNext = useCallback(() => {
     setCurrentChapterIdx((i) => Math.min(chapters.length - 1, i + 1));
-  }, []);
+  }, [setCurrentChapterIdx]);
 
   // Keyboard navigation
   useEffect(() => {

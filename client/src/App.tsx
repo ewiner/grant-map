@@ -1,5 +1,4 @@
-import { Switch, Route, Router } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
+import { Switch, Route, Redirect } from "wouter";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Analytics } from "@vercel/analytics/react";
 import { queryClient } from "./lib/queryClient";
@@ -10,12 +9,11 @@ import NotFound from "./pages/not-found";
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Router hook={useHashLocation}>
-        <Switch>
-          <Route path="/" component={MapPage} />
-          <Route component={NotFound} />
-        </Switch>
-      </Router>
+      <Switch>
+        <Route path="/chapter/:num">{(params) => <MapPage chapterNum={Number(params.num)} />}</Route>
+        <Route path="/"><Redirect to="/chapter/1" /></Route>
+        <Route component={NotFound} />
+      </Switch>
       <Toaster />
       <Analytics />
     </QueryClientProvider>
